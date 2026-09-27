@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueries, useQuery, useQueryClient } from '@tanstack/react-query'
 import { api } from './client.ts'
 
 export type MonthlyRecord = {
@@ -32,12 +32,20 @@ export function useMonthlyTotals() {
   })
 }
 
-export function useMonthlyRecords(unitId: number | undefined) {
-  return useQuery({
+function monthlyRecordsQuery(unitId: number | undefined) {
+  return {
     queryKey: ['monthly-records', unitId],
     queryFn: () => api<MonthlyRecord[]>(`/monthly-records?unitId=${unitId}`),
-    enabled: unitId !== undefined,
-  })
+  }
+}
+
+export function useMonthlyRecords(unitId: number | undefined) {
+  return useQuery({ ...monthlyRecordsQuery(unitId), enabled: unitId !== undefined })
+}
+
+// Meses de várias unidades de uma vez. Usa o mesmo cache de useMonthlyRecords.
+export function useMonthlyRecordsOf(unitIds: number[]) {
+  return useQueries({ queries: unitIds.map((id) => monthlyRecordsQuery(id)) })
 }
 
 export function useSaveMonthlyRecord() {

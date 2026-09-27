@@ -31,6 +31,27 @@ O gráfico tem 2 linhas: a da unidade escolhida (cheia) e a do **total de todas 
 - Saldo atualizado (banco de kWh): soma dos bancos. Se uma unidade não tem registro no mês, entra o último banco dela. Por isso o total do último mês é igual ao card "Total do banco de kWh".
 - A soma é feita no servidor (`GET /api/monthly-totals`).
 
+### Todas as unidades numa única visão
+
+No seletor do gráfico, a opção **"Todas as unidades"** mostra uma linha para cada unidade e a linha do total, juntas. Ela já vem escolhida quando a tela abre.
+
+| Linha        | Aparência                                    |
+| ------------ | -------------------------------------------- |
+| Geradora     | linha grossa, pontos quadrados, tons quentes |
+| Consumidora  | linha fina, pontos redondos, tons frios      |
+| Total        | linha tracejada cinza                        |
+
+Cada unidade mantém a mesma cor nas duas visões. A diferença entre as linhas não depende só da cor.
+
+### Comparações na caixa de valor
+
+Ao passar o mouse (ou tocar) no gráfico, a caixa de valor mostra o mês apontado. Para cada linha, ela mostra o valor e 2 comparações:
+
+1. **Mês atual x mês anterior:** a variação em kWh e em % (ex.: "▲ +84,00 kWh (+8,8%)"). O mês atual é o mês apontado; o anterior é o mês antes dele no gráfico. Sem valor no mês anterior, aparece "sem dados no mês anterior".
+2. **Total x unidade:** a parte da unidade no total (%) e a diferença para o total (total − unidade). Não aparece na linha do próprio total.
+
+A legenda (`LineLegend`) mostra só o desenho, o nome e o tipo de cada linha. As contas ficam em `frontend/src/comparison.ts` e a caixa em `frontend/src/components/ChartTooltip.tsx`.
+
 ### Estações do ano no gráfico
 
 O gráfico de linha mostra as estações como faixas coloridas no fundo. Usa o hemisfério sul e 3 meses por estação (divisão da meteorologia):

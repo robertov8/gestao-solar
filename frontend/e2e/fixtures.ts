@@ -24,6 +24,12 @@ export function formatKwh(value: number) {
   return `${numberFormat.format(value)} kWh`
 }
 
+const percentFormat = new Intl.NumberFormat('pt-BR', { style: 'percent', maximumFractionDigits: 1 })
+
+export function formatPercent(ratio: number) {
+  return percentFormat.format(ratio)
+}
+
 // Linha da tabela de unidades pelo nome exato da unidade.
 export function unitRow(page: Page, name: string) {
   return page
