@@ -1,0 +1,13 @@
+bin/
+data/
+backend/web/dist/
+node_modules/
+
+*.db
+*.db-shm
+*.db-wal
+
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json

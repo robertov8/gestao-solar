@@ -1,0 +1,11 @@
+.git
+bin
+data
+**/node_modules
+**/data
+backend/web/dist
+frontend/test-results
+frontend/playwright-report
+*.db
+*.db-shm
+*.db-wal
