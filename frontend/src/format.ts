@@ -51,3 +51,12 @@ export function currentMonth() {
   const now = new Date()
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`
 }
+
+const monthCountFormat = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 })
+
+// 2,14 → "2,1 meses". Abaixo de 1 mês, não mostra a fração.
+export function formatMonthCount(value: number) {
+  if (value < 1) return 'menos de 1 mês'
+  const text = monthCountFormat.format(value)
+  return `${text} ${text === '1' ? 'mês' : 'meses'}`
+}

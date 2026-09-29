@@ -6,6 +6,7 @@ import AllocationFormDialog from '../components/AllocationFormDialog.tsx'
 import BankTotalCard from '../components/BankTotalCard.tsx'
 import EnergyChart from '../components/EnergyChart.tsx'
 import { ErrorCallout } from '../components/form.tsx'
+import InsightsSection from '../components/InsightsSection.tsx'
 import MonthlyRecordFormDialog from '../components/MonthlyRecordFormDialog.tsx'
 import UnitFormDialog from '../components/UnitFormDialog.tsx'
 import UnitsTable from '../components/UnitsTable.tsx'
@@ -54,6 +55,7 @@ export default function DashboardPage() {
       ) : (
         <>
           <EnergyChart units={units} />
+          <InsightsSection units={units} />
           <Flex asChild direction="column" gap="3">
             <section aria-labelledby={unitsTitleId}>
               <Heading as="h2" size="4" id={unitsTitleId}>

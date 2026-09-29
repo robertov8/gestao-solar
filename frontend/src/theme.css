@@ -1,0 +1,18 @@
+/* O Recharts usa cinzas fixos por padrão (#ccc, #666, #fff), que somem ou
+   brilham demais no modo escuro. Aqui eles seguem as cores do tema. */
+.recharts-cartesian-grid line {
+  stroke: var(--gray-a5);
+}
+
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: var(--gray-a7);
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: var(--gray-11);
+}
+
+.recharts-active-dot circle {
+  stroke: var(--color-background);
+}
